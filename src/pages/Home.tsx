@@ -18,11 +18,7 @@ import {
     InputGroup,
     InputRightElement,
 } from '@chakra-ui/react';
-
-export interface IUserDataLogin {
-    email: string;
-    password: string;
-}
+import { IUserDataLogin } from '../types';
 
 const Home = () => {
     const [emailUser, setEmailUser] = useState<string>('');

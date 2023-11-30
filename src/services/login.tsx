@@ -1,5 +1,5 @@
 import { api } from '../api';
-import { IUserDataLogin } from '../pages/Home';
+import { IUserDataLogin } from '../types';
 
 export const login = async (userData: IUserDataLogin): Promise<boolean> => {
     const dataApi = await api;

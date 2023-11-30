@@ -1,10 +1,4 @@
-export interface IUserDataAccount {
-    email: string;
-    password: string;
-    name: string;
-    balance: number;
-    id: string;
-}
+import { IUserDataAccount } from './types';
 
 const conta: IUserDataAccount = {
     email: 'joao@felicio.com',
