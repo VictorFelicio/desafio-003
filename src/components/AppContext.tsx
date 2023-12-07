@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { getAllLocalStorage } from '../services/storage';
-import { IAppContext } from '../types';
+import { IAppContext, IUserDataAccount } from '../types';
+import { api } from '../api';
 
 export const AppContext = createContext({} as IAppContext);
 
@@ -16,10 +17,23 @@ export const AppContextProvider = ({ children }: any) => {
         }
     }, [storage]);
 
-    const user = 'nathally';
+    const [userData, setUserData] = useState<IUserDataAccount| null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await api;
+        setUserData(data);
+      } catch (error) {
+        console.error('Erro ao obter dados do usuário:', error);
+      }
+    };
+
+    fetchData();
+  }, []);    
 
     return (
-        <AppContext.Provider value={{ user, isLoggedIn, setIsLoggedIn }}>
+        <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn,userData, setUserData}}>
             {children}
         </AppContext.Provider>
     );

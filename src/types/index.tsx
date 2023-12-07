@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler } from 'react';
 
 interface IUserDataAccount {
     email: string;
@@ -9,26 +9,27 @@ interface IUserDataAccount {
 }
 
 interface IAppContext {
-    user: string,
-    isLoggedIn: boolean,
-    setIsLoggedIn: (isLoggedIn: boolean) => void
+    isLoggedIn: boolean;
+    setIsLoggedIn: (isLoggedIn: boolean) => void;
+    userData: IUserDataAccount | null;
+    setUserData: React.Dispatch<React.SetStateAction<IUserDataAccount | null>>;
 }
 
 interface ICardInfo {
-    mainContent: string,
-    content: string
+    mainContent?: string;
+    content?: string | React.ReactNode
 }
 
 interface IDButton {
-    onClick: MouseEventHandler
+    onClick: MouseEventHandler;
 }
 
 interface UserData {
-    email: string
-    password: string
-    name: string
-    balance: number
-    id: string
+    email: string;
+    password: string;
+    name: string;
+    balance: number;
+    id: string;
 }
 
 interface IUserDataLogin {
@@ -40,4 +41,12 @@ interface IDIoBank {
     login: boolean;
 }
 
-export type {IUserDataAccount, IAppContext,ICardInfo,IDButton,UserData,IUserDataLogin,IDIoBank }
+export type {
+    IUserDataAccount,
+    IAppContext,
+    ICardInfo,
+    IDButton,
+    UserData,
+    IUserDataLogin,
+    IDIoBank,
+};

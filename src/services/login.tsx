@@ -6,7 +6,7 @@ export const login = async (userData: IUserDataLogin): Promise<boolean> => {
 
     const { email, password } = userData;
 
-    if (email !== dataApi.email && password !== dataApi.password) {
+    if (email !== dataApi.email || password !== dataApi.password) {
         return false;
     }
 

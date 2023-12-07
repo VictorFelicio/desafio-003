@@ -4,7 +4,7 @@ describe('login', () => {
 
     const mockUserData = {
     email: 'joao@felicio.com',
-    password: '123@joao'
+    password: '123joao'
     }
 
     const mockUserDataWrong = {

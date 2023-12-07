@@ -1,28 +1,18 @@
 import { Center, SimpleGrid, Spinner } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-import { api } from '../api';
+import { useContext } from 'react';
+
 import CardInfo from '../components/CardInfo';
 import { AppContext } from '../components/AppContext';
-import { UserData } from '../types';
 
 const Conta = () => {
-    const [userData, setUserData] = useState<null | UserData>();
+    const { userData } = useContext(AppContext);
     const { id } = useParams();
     const navigate = useNavigate();
 
     const { isLoggedIn } = useContext(AppContext);
 
     !isLoggedIn && navigate('/');
-
-    useEffect(() => {
-        const getData = async () => {
-            const data: any | UserData = await api;
-            setUserData(data);
-        };
-
-        getData();
-    }, []);
 
     const actualData = new Date();
 
@@ -40,7 +30,7 @@ const Conta = () => {
                 ) : (
                     <>
                         <CardInfo
-                            mainContent={`Bem vinda ${userData?.name}`}
+                            mainContent={`Bem vindo ${userData?.name}`}
                             content={`${actualData.getDay()} / ${actualData.getMonth()} / ${actualData.getFullYear()} ${actualData.getHours()}:${actualData.getMinutes()}`}
                         />
                         <CardInfo
